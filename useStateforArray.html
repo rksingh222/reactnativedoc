@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 100%;
+            width: 100%;
+            background: #f5f6fa;
+        }
+
+        div {
+            color: #67727e;
+            font-size: 20px;
+            padding-left: 20px;
+        }
+
+        .inner-pre {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <pre>
+            <span class="inner-pre">
+
+import { useState } from 'react';
+
+const [enteredGoalText, setEnteredGoalText] = useState('');
+const [courseGoals, setCourseGoals] = useState([]);
+
+function goalInputHandler(enteredText){
+    console.log(enteredText);
+    setEnteredGoalText(enteredText);
+}
+
+function addGoalHandler(){
+    console.log(enteredGoalText);
+    setCourseGaols(currentCourseGoals =>[...currentCourseGoals, enteredGoalText]);
+}
+
+
+&lt TextInput style={styles.textInput} onChangeText={goalInputHandler} &gt
+&lt Button onPress={addGoalhandler} &gt 
+&lt View &gt
+  {courseGoals.map((goal)=> <Text key="{goal}">{goal}</Text>)}
+            
+const styles = StyleSheet.create({
+    textInput :{
+        marginBottom: 10px;
+    }
+})
+&lt /View &gt
+</span>
+        </pre>
+        Array initializer using useState <br>
+        set the array value using the function <br>
+        3. button has onPress handler which allows to call a function on pressing a button in react where as in html its
+        onClick<br>
+        4. How to use useState in React Native. We save the first element empty<br>
+        5. How to update the useState<br>
+        6. How to print the enteredGoalText <br>
+    </div>
+</body>
+
+</html>
