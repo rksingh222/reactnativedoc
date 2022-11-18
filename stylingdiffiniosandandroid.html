@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 100%;
+            width: 100%;
+            background: #f5f6fa;
+        }
+
+        div {
+            color: #67727e;
+            font-size: 20px;
+            padding-left: 20px;
+        }
+
+        .inner-pre {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <pre>
+            <span class="inner-pre">
+
+import { useState } from 'react';
+
+const [enteredGoalText, setEnteredGoalText] = useState('');
+const [courseGoals, setCourseGoals] = useState([]);
+
+function goalInputHandler(enteredText){
+    console.log(enteredText);
+    setEnteredGoalText(enteredText);
+}
+
+function addGoalHandler(){
+    console.log(enteredGoalText);
+    setCourseGaols(currentCourseGoals =>[...currentCourseGoals, enteredGoalText]);
+}
+
+
+&lt TextInput style={styles.textInput} onChangeText={goalInputHandler} &gt
+&lt Button onPress={addGoalhandler} &gt 
+
+&lt View style={styles.goalsContainer} &gt
+   {courseGoals.map((goal)=> (
+       &lt Text  style={styles.goalITem} &gt {goal} &lt/Text &gt
+   )}
+&lt /View &gt
+            
+const styles = StyleSheet.create({
+    textInput :{
+        marginBottom: 10px;
+    }
+    goalItem: {
+        margin: 8,
+        padding: 8,
+        borderRadius: 6,
+        backgroundColor: '#5e0acc',
+        color:'white',
+    }
+})
+</span>
+</pre>
+        <p>when i do the above the styling output in different devices i.e IOS and android is different. There will be
+            no border radius applied to it
+            to fix this we create a view above the Text and give the styling to view instead of text </p>
+    </div>
+</body>
+
+</html>
