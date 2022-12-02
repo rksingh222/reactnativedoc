@@ -5,6 +5,13 @@
  * to preconfigure a function for future execution
  * the first parameter passed is this , second argument passed to bind
  * is will be the first parameter recieved by the to be called function
+ *
+ * ripple effect in Pressable can be done
+ *  <Pressable
+ *   android_ripple={{color: '#210644'}}
+ *   onPress={props.onDeleteItem.bind(this, props.id)}
+ *   style={({pressed}) => pressed && styles.pressedItem}>
+ *  for android_ripple and using style pressed on ios and android both
  */
 
 /**
@@ -200,7 +207,10 @@
  
  function GoalItem(props) {
    return (
-     <Pressable onPress={props.onDeleteItem.bind(this, props.id)}>
+      <Pressable
+      android_ripple={{color: '#210644'}}
+      onPress={props.onDeleteItem.bind(this, props.id)}
+      style={({pressed}) => pressed && styles.pressedItem}>
        <View style={styles.item}>
          <Text style={styles.text}>{props.text}</Text>
        </View>
