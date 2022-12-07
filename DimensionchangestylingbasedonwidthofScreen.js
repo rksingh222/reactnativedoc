@@ -13,7 +13,7 @@
 
 import { Dimensions, StyleSheet } from "react-native";
 
-const deviceWidth = Dimensions.get('window').width;
+const deviceWidth = Dimensions.get('window').width; // in palace of window you can use screen also
 
 const styles = StyleSheet.create({
   container : {
