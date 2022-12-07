@@ -18,6 +18,9 @@ const deviceWidth = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   container : {
       padding : deviceWidth < 380 ? 12 : 24,
+      width: deviceWidth < 380 ? 150 : 300,
+      height: deviceWidth < 380 ? 150 : 300,
+      borderRadius: deviceWidth < 380 ? 75 : 150,
   }
 });
 
