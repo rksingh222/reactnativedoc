@@ -1,21 +1,28 @@
 /***
+*
+* if you get a problem regarding reanimated 
+*
  * in one project
  * 
  * first try restarting the npm start process 
  * 
- * and run npm run ios in another terminal
+ * Just add the below code in babel.config.js
  * 
- * Reanimated package error if you get
+ * module.exports = {
+ *     presets: ['module:metro-react-native-babel-preset'],
+ *
+ *     // add the below line 
+ *     plugins: ['react-native-reanimated/plugin'], 
+ *    // this should be always last line
+ *   };
  * 
- * a fix that works  is to install new version of reanimated
+ * then in terminal 
  * 
- * go to package.json
- * 
- * you will have react-native-reanimated version
- * 
- * go to terminal project
- * 
- * npm install react-native-reanimated@1 --save --save-exact
+ * npx react-native start --reset-cache or npm start -- --reset-cache
+ *
+ * run the app again
+ *
+ * this should fix the problem related to reanimated 
  */
 
 /*
