@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100%;
+            width: 100%;
+            background: #f5f6fa;
+        }
+        div{
+            color: #67727e;
+            font-size: 20px;
+            padding-left: 20px;
+        }
+    
+        table{
+            width: 80%;
+        }
+        tr,td{
+            text-align: left;
+        }
+        td{
+            width: 100px;
+        }
+        .date{
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <table>
+            <tr><td colspan="2" class="date">Date - 18 Jan 2023</td></tr>
+            <tr><td colspan="3"></td></tr>
+            <tr><td colspan="3"></td></tr>
+            <tr>
+                <th>Expo "Managed Workflow"</th><th>Expo "Bare WorkFlow</th><th>React Native CLI</th>
+            </tr>
+           <tr><td>Easy to setup and work with</td><td>Relatively easy to set up and work with </td><td>More Complex set</td></tr>
+           <tr><td>Quick and frictionless development</td><td>Convenient development</td><td>Convenient development</td></tr>
+           <tr><td>No or very little configuration required</td><td>Some configuration required</td><td>Can require more configuration effort</td></tr>
+           <tr><td>you can build cross plaform standalone apps</td><td>you can build (cross - platform) standalone apps</td><td>Standalone apps are built locally</td></tr>
+           <tr><td>https://docs.expo.dev/</td><td>https://reactnative.dev/docs/environment-setup</td><td>https://reactnative.dev/docs/environment-setup</td></tr>
+           <tr><td>with expo go you can run your app on android and ios in windows as well as in mac</td><td>same as react native CLI</td><td>you can build ios apps and android if you have mac and android if you have windows and linux android app </td></tr>
+           <tr><td>with expo go you can preview your app on real device</td><td>same as react native CLI</td><td>need to install android and do configuration and install Xcode and do configuration</td></tr>
+           <tr><td>(should have node and watchman)npx create-expo-app AwesomeProject(try this) (doesn't work) use [npm  install -g expo-cli](use managed workflow not bare workflow)</td><td>follow the environment setup guide</td><td>follow the environment setup guide</td></tr>
+           <tr><td>(for real device)install expo go app on android and ios real device(search in play store expo go or app store)=>npm start => this will give a qr code(it will open a browser window)=>(in ios you have to scan the barcode from your camera)=>open the link</td><td>follow the environment setup guide</td><td>follow the environment setup guide</td></tr>
+           <tr><td>ssimulator android=>application=>Xcode.app=>right click =>show show package contents=>Developer=>applciations=>simulator=>double click(you can change the simulator file- open-ios)</td><td>Convenient development</td><td>Convenient development</td></tr>
+           <tr><td>expo init</td><td>expo init</td><td>npx react-native init project</td></tr>
+           <tr><td>expo init</td><td>convert managed expo to bare expo using (expo eject ) =>bundle identifier name => come.acdemind.rncourse</td><td>npx react-native init project</td></tr>
+           <tr><td>don't need</td><td>don't need</td><td>in case you want to use third party package of expo in react native cli in that case you can make this project expo bare workflow by calling npx install-expo-modules</td></tr>
+        </table>
+    </div>
+</body>
+
+</html>
