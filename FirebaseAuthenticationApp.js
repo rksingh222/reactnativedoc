@@ -177,6 +177,7 @@ function AuthContextProvider({children}) {
     AsyncStorage.removeItem('token');
   }
 
+  /* !! with the variable means true or false it it has a value greater than 1 then true else false */
   const value = {
     token: authToken,
     isAuthenticated: !!authToken,
