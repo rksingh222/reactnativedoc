@@ -2,6 +2,7 @@
  * Redux Files
  * 
  */
+/** npm install @reduxjs/toolkit*/
 
 /**
  * store/redux/favorite.js
