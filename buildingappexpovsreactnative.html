@@ -7,46 +7,324 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body{
+        body {
             height: 100%;
             width: 100%;
             background: #f5f6fa;
         }
-        div{
+
+        div {
             color: #67727e;
             font-size: 20px;
             padding-left: 20px;
-        }
-    
-        table{
-            width: 80%;
-        }
-        tr,td{
-            text-align: left;
-        }
-        td{
-            width: 100px;
-        }
-        .date{
-            text-align: left;
         }
     </style>
 </head>
 
 <body>
     <div>
-        <table>
-            <tr><td colspan="2" class="date">Date - 20 Jan 2023</td></tr>
-            <tr><td colspan="3"></td></tr>
-            <tr><td colspan="3"></td></tr>
-            <tr>
-                <th>Expo "Managed Workflow"/Expo "bare Workflow"</th><th>React Native CLI</th>
-            </tr>
-           <tr><td>Configure the project</td><td>Configure the project </td></tr>
-           <tr><td>Build app binaries with expo's cloud service</td><td>Build app binaries locally</td></tr>
-           <tr><td>Advantage: No local resources used and you can build for all target platforms</td><td>Build app binaries locally</td></tr>
-           <tr><td>Submit to app stores</td><td>Submit to app stores</td></tr>
-        </table>
+
+        search for expo eas(expo application services) <br><br>
+        this is the service that will allow us to build that e app on cloud and also<br>
+        submit the cloud directly to the app store <br>
+
+        <u>configuring the app </u><br>
+
+        go to app.json to configure the expo app <br>
+        name : -- name of your app(My recipe book) <br>
+        slug: -- does not matter<br>
+        version: -- user facing version which user will see <br>
+        you can also specific to android and ios and that is internal but matters to the app store <br>
+        ios(near support table)<br>
+        "ios":{ <br>
+        "buildNumber" : "1.0.0", <br>
+        }<br>
+        "android":{<br>
+        "versionCode": 1,<br>
+        }<br>
+
+        <u></u>Setting Environment Variable</u>(in official EAS doc=>under EAS =>Environment) you can read<br>
+        if you have a secret key(like API_KEY or API_URL) or something then you can set those in Environment variable
+        <br>
+
+        <u>adding icons and splash screen</u> <br><br>
+
+        inside assets/splash.png and assets/icon.png <br>
+
+        default splash.png and icon.png<br>
+        favicon.png(for building web app)<br>
+        addaptive-icon(android specific)<br>
+
+        they can be change with custom file<br>
+
+        regarding dimension<br>
+        search for expo icons splash (how splash screen and icons added and dimensions changed)<br>
+        you can add this by changing app.json splash/image parameter and icon for icon path<br>
+
+        you can directly add an icon file and favicon and splash in your asset folder <br>
+
+        <u>building Expo app with EAS</u><br><br>
+
+        <u>Android</u>
+        go to EAS build <br>
+
+        To start with you need to have expo created project <br>
+        an expo user account<br>
+        go to https://expo.dev/signup <br>
+        install EAS locally <br>
+        this can be done using<br>
+        sudo npm install -g eas-cli<br>
+        next login to your account login<br>
+        eas login <br>
+        give your email and password <br>
+        configure the project <br>
+        eas build:configure<br>
+        buidling apks for aandroid emulators and devices<br>
+        configuring the profile to build apks<br>
+        go to eas.json <br>
+        "build": {<br>
+        "preview": {
+        "android": {
+        "buildType": "apk",
+        }
+        }
+        }
+        to run your build <br>
+        eas build -p android --profile preview <br>
+        what would you like your android application id to be ? com.academind.myrecipebook<br>
+        Generate a new android keystore: yes<br>
+        with this our app will be uploaded to EAS<br>
+        builds geenerated with url like ...build in progress...<br>
+        if build fails project name inside EXPO.dev /sigun up/builds/buildinfo/fialing phase/ <br>
+        got an error and changed it to older version<br>
+        we will get apk link <br>
+        Builds/build artifact click on ... dots and download it <br>
+        you can drag and drop to emulator <br>
+        you can check on real device by scanning the barcode <br>
+
+        for generating the file for uploading in appstore <br>
+        instead of this it will be production <br>
+        "build": {<br>
+        "production": {<br>
+        }<br>
+        }<br>
+        this will generate aab file <br>
+        eas build --platform android<br>
+
+        <u>ios</u> <br><br>
+
+        tweak eas.json<br>
+        "preview": { <br>
+        "ios": { <br>
+        "simulator":true<br>
+        }<br>
+        }<br>
+
+        eas build -p ios --profile preview<br>
+        ios bundle Identifier : com.academind.myrecipebook<br>
+        this getss uploaded to eas server <br>
+        once build completed it gives a link which can be followed again <br>
+        when opened a link we get a SIP file that can be downloaded and this <br>
+        file can then also be extracted gives .app file can be executed on simulator<br>
+        drag and drop this file on the simulator to install this <br><br>
+
+        to generate a production build in ios <br>
+        to publish google playe you need to pay $25 USD <br>
+        to publish to app store developer to pay $99 yearly <br>
+        once done you need to generate certificate <br>
+        eas build --platform ios<br>
+        do you log into your apple account <br>
+        if i grant them permission they will set up a couple of certificates and profiles <br>
+        that are needed to sign and build this app for production <br>
+        i will say n <br>
+        lets do certificate manually <br>
+        log in apple account <br>
+        certificate , identifiers and profiles <br>
+        certificate <br>
+        ios Distribution (apple store)<br>
+        create a new certificate step 9<br>
+        Follow these steps <br>
+        Lauch keychain access located in /Application/Utilities<br>
+        choose keychain access > Certifcate Assistant > Request a certificate from a certificate authority<br>
+        In the certificate assistant dialog, enter an email address in the user email address field<br>
+        In the common name field, enter a name for for the key (Example rahul kumar singh key)<br>
+        learve the CA Email address field emplty<br>
+        choose "saved to disk " then click continue <br>
+        upload the file created in step 9 <br>
+        it will generate a new file download it <br>
+        now go to your application folder in the root directory open certs/ios folder<br>
+        drag this downloaded file ios_distribution.cert<br>
+        now we need another file from apple account go there<br>
+        certificate , identifiers and profiles <br>
+        profiles <br>
+        app store provisioning profile <br>
+        continue <br>
+        pick an App ID (we don't have one so create) <br>
+        go apple account begining <br>
+        App Store Connect <br>
+        Go to App Store Connect <br>
+        My Apps <br>
+        + sign click step 11 <br>
+        Name : Recpiee Book , check ios, language : english , bundleID we gave before: com.academind.myrecipebook <br>
+        (to fill this click at the text written below the bundle id textbox ceriticate, identifiers and profiles) <br>
+        give description : Recipe Book App and BundleId Exploit : fill com.academind.myreciptebook<br>
+        click continue <br>
+        if you use specific feature in your app select those if its needed <br>
+        register<br>
+        go to step 11 again <br>
+        click on + <br>
+        select ios name : give, give language <br>
+        pick the bundle id recipe book : com.academind.myrec<br>
+        full access <br>
+        before user acces in textbox file the name my recipe book <br>
+        now go back again to certificates -> profiles -> click on + <br>
+        choose App Store provisioniosn profile<br>
+        pick the recipe book app in APP ID <br>
+        continue <br>
+        in select certificate select the radio button Rahul Singh (iso Distribution)<br>
+        continue<br>
+        provision profile name RN Recipe Book <br>
+        Generate<br>
+        download<br>
+        copy this in ios/certs<br>
+        in eas.json <br>
+        for the distribution certificate<br>
+        execute this ios/certs/ios_distribution.cer -=>reveal in finder<br>
+        excute this so that it gets added to keychain <br>
+        clicking on it opens a popup with add button <br>
+        add this to keychain<br>
+        open keychain in icloud<br>
+        search the keychain which you just added <br>
+        right click and export and file format as p12 file <br>
+        this will be saved in ios/certs/folder <br>
+        after saving it will ask for password <br>
+        you will get p12 file<br>
+        "production": {<br>
+        "ios": {<br>
+        "provisioningProfilePath": "certs/ios/RN_Recipe_Book.mobileprovision",<br>
+        "distributionCertificate": {<br>
+        "path": "certs/ios/Certificates.p12",<br>
+        "password": "password you gave" <br>
+        }<br>
+        }<br>
+        }<br>
+
+        if you are in windows or linux give it to EAS cloud to do this <br>
+
+        actually the previously we added in eas.json it should not be added there<br>
+        we should create credentials.json file <br>
+        {<br>
+        "ios": {<br>
+        "provisioningProfilePath": "certs/ios/RN_Recipe_Book.mobileprovision",<br>
+        "distributionCertificate": {<br>
+        "path": "certs/ios/Certificates.p12",<br>
+        "password": "password you gave" <br>
+        }<br>
+        }<br>
+        }<br>
+        now do eas build --platform ios <br>
+        it will ask do you want ot log into my apple account <br>
+        choose no<br>
+        still forces us to login <br>
+        cancel this <br>
+        what you can do to force EAS to use your local credenticals<br>
+        go to eas.json<br>
+        "production": {<br>
+        "credentialsSource": "local"<br>
+        }<br>
+        eas build --platform ios<br>
+        it won't ask me to login for me<br>
+        if i wanna use push notification(answer no) <br>
+        this will produce output that can be submitted to app store either manually or help of EAS SUbmit<br><br>
+
+
+        <u>building for ios without expo</u><br>
+        go to ios folder in your project directory=>xcworkspace <br>
+        In general in xcode => change bundle Identifier => com.academind.xyz<br>
+        you can give version number and build number <br>
+        automatically manage signing <br>
+        choose team=> add an account => login with apple id account => then you will be able to choose your team<br>
+        to change icon => app icons source => click on two arrows=>drag all the icons <br>
+        In the app folder when you expand you will find Launchscreen.xib=> this will allow you to customize launch
+        screen <br>
+        you can learn this from xcode doc <br>
+        you can also build the app here and selection the device iphone simulator<br>
+        click on play button <br><br>
+
+        for deployment on app store <br>
+        go to info.plist <br>
+        you will find app transport security settings key <br>
+        click on that you will find exception domain => localhost which is blocked <br>
+        remove localhost from it <br>
+        then you need to go to XCODE => product => scheme => edit scheme => buildconfiguration => Release => close<br>
+        run the build this will be used for production <br>
+        select Generic ios device when building<br><br>
+        also in Targets before general tab RNWithoutExpoTest=> select Team => your appled id<br>
+        if you still get error press command + 1 in XCODE <br>
+        in build settings=> linking => Dead Code stripping => Release => no <br>
+        build this if it succeeds <br>
+        go to Xcode=>product =>archive => run the app again <br>
+        this archives your app <br>
+        you can distribute your app <br>
+
+        go to apple developer acountstore <br>
+        go to certificates, Ids and profiles => identifiers => (+) => app id select => continue<br>
+        you will give the bundle identifier you gave before in bundle id and aslos desciption and register(id is
+        registered) <br>
+        go to itunes connect in google <br>
+        go to myapps <br>
+        add + new app <br>
+        select ios , name : RN No expo, language: english, bundle id : RN Demo - com,academind. SKU: anything
+        like(rnnoexpo)<br>
+        click create <br><br><br>
+
+
+        <u>Building for android without Expo</u><br>
+        react native publish to google play store => search in google<br>
+        keytool -genkeypair -v -storetype PKCS12 -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA
+        -keysize 2048 -validity 10000<br>
+        you can give random password<br>
+        Place the my-upload-key.keystore file under the android/app directory in your project folder.<br>
+        go ~/.gradle/gradle.properties or android/gradle.properties,<br>
+        Replace *** with keystore password  and add these in the gradle.properties<br>
+        MYAPP_UPLOAD_STORE_FILE=my-upload-key.keystore<br>
+        MYAPP_UPLOAD_KEY_ALIAS=my-key-alias<br>
+        MYAPP_UPLOAD_STORE_PASSWORD=*****<br>
+        MYAPP_UPLOAD_KEY_PASSWORD=*****<br>
+        Edit the file android/app/build.gradle in your project folder, and add the signing config,<br>
+        Inside signingConfig<br>
+        copy this <br>
+        release {<br>
+            if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {<br>
+                storeFile file(MYAPP_UPLOAD_STORE_FILE)<br>
+                storePassword MYAPP_UPLOAD_STORE_PASSWORD<br>
+                keyAlias MYAPP_UPLOAD_KEY_ALIAS<br>
+                keyPassword MYAPP_UPLOAD_KEY_PASSWORD<br>
+            }<br>
+        under buildtype=>release=>add<br>
+        signingConfig signingConfigs.release<br>
+        now you can generate the apk key <br>
+        cd android<br>
+         ./gradlew bundleRelease<br>
+         outputs/bundle/realase/aap.aab<br>
+         to upload in google play store <br>
+         Google Play console <br>
+         create application <br>
+         give app name <br>
+         under App Release <br>
+         under production track manage <br>
+         create release <br>
+         continue(you can also see documentation in google play store)<br>
+         browse files <br>
+         give aap.aab<br>
+         how to set icon in android<br>
+         go to android studio => open an existing project <br>
+         open android folder with android studio<br>
+         android/app/source/main/res => new =>image asset=> conveniently change icon<br>
+         change foreground or background <br>
+         click finish<br>
+         you need to build with gradlew again<br>
+         
     </div>
 </body>
 
